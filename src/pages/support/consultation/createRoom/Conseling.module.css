@@ -94,6 +94,58 @@
   width: 100%;
 }
 
+/* Style Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.modal p {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.modal-button {
+  background-color: #E6B3E0;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.modal-button:hover {
+  background-color: #2563eb;
+}
+
+.modal-button:focus {
+  outline: none;
+}
+
+
 @keyframes fadeIn {
   from {
     opacity: 0;

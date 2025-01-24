@@ -13,7 +13,7 @@ export default function Home() {
 
   useEffect(() => {
     // Jika tidak ada cookie, arahkan ke halaman login
-    if (!name || !email || !role) {
+    if (!name || !email || role != '1') {
       router.push("/");
     }
   }, [name, email, role, router]);

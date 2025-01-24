@@ -21,16 +21,13 @@ const Consultation = () => {
 
   // Periksa cookies, arahkan ke halaman login jika tidak ditemukan
   useEffect(() => {
-    if (!name || !email || !role) {
+    if (!name || !email || role !== '1') {
       router.push('/'); // Arahkan ke halaman login jika tidak ada cookies
     }
   }, [name, email, role, router]);
 
   const handleAddRoom = () => {
-    const roomName = prompt('Masukkan nama room baru:');
-    if (roomName?.trim()) {  // Pastikan roomName tidak kosong
-      setRooms((prevRooms) => [...prevRooms, roomName]); // Menambah room ke state
-    }
+    // Fungsi ini tidak lagi diperlukan jika menggunakan Link
   };
 
   return (
@@ -39,9 +36,12 @@ const Consultation = () => {
       <main className={styles.content}>
         <header className={styles.header}>
           <h1>Consultation</h1>
-          <button onClick={handleAddRoom} className={styles.addRoomButton}>
-            <AiOutlinePlus className={styles.icon} />
-          </button>
+          {/* Gunakan Link untuk mengarahkan ke createRoom */}
+          <Link href="/support/consultation/createRoom">
+            <button className={styles.addRoomButton}>
+              <AiOutlinePlus className={styles.icon} />
+            </button>
+          </Link>
         </header>
 
         <div className={styles.roomList}>
