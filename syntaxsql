@@ -1,0 +1,10 @@
+CREATE TABLE account (
+    id SERIAL PRIMARY KEY, -- Auto increment ID untuk setiap akun
+    nama VARCHAR(255) NOT NULL, -- Nama lengkap
+    email VARCHAR(255) UNIQUE NOT NULL, -- Email harus unik
+    gender CHAR(1) NOT NULL CHECK (gender IN ('f', 'm')), -- Gender (f untuk female, m untuk male)
+    password VARCHAR(255) NOT NULL, -- Password yang di-hash
+    role INT NOT NULL DEFAULT 1, -- Default role = 1
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Timestamp pembuatan akun
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Timestamp terakhir diperbarui
+);
