@@ -1,0 +1,85 @@
+/* Container utama */
+.container {
+  min-height: 100vh; /* Membuat kontainer memenuhi tinggi layar */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; /* Menyediakan referensi posisi untuk tombol */
+}
+
+/* Main Content */
+.content {
+  flex: 1; /* Memastikan elemen ini menggunakan sisa ruang */
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.roomList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.room {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #333;
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+.room:hover {
+  background-color: #e9e9e9;
+}
+
+.roomIcon {
+  font-size: 18px;
+  color: #0070f3;
+}
+
+.emptyMessage {
+  color: #666;
+  text-align: center;
+}
+
+/* Button Tambah Room */
+.addRoomButton {
+  position: absolute; /* Menempatkan tombol di dalam kontainer */
+  bottom: 80px; /* Menempatkan tombol di atas footer */
+  right: 20px; /* Menempatkan tombol di kanan */
+  background-color: #0070f3;
+  color: #fff;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 20px;
+  z-index: 1000; /* Pastikan tombol berada di atas konten */
+}
+
+.addRoomButton:hover {
+  background-color: #005bb5;
+}
+
+.icon {
+  font-size: 18px;
+}

@@ -19,9 +19,6 @@ const Navbar = () => {
     
     // Hapus token dari localStorage
     localStorage.removeItem('token');
-
-    // Arahkan pengguna ke halaman login setelah logout
-    router.push('/');
   };
 
   // Menyimpan URL asal pengguna sebelum logout
@@ -46,10 +43,10 @@ const Navbar = () => {
       </button>
       <ul className={`${styles.navLinks} ${isOpen ? styles.open : ''}`}>
         <li>
-          <Link href="/" onClick={() => setIsOpen(false)}>Home</Link>
+          <Link href="/home" onClick={() => setIsOpen(false)}>Home</Link>
         </li>
         <li>
-          <Link href="/" onClick={() => setIsOpen(false)}>About</Link>
+          <Link href="/home" onClick={() => setIsOpen(false)}>About</Link>
         </li>
         <li>
           <Link href="/support" onClick={() => setIsOpen(false)}>Support</Link>
@@ -58,8 +55,17 @@ const Navbar = () => {
           <Link href="/support/legal" onClick={() => setIsOpen(false)}>Legal Support</Link>
         </li>
         <li>
-          {/* Logout Button */}
-          <button onClick={handleLogout} className={styles['logout-button']}>Log out</button>
+          {/* Logout Link */}
+          <Link 
+            href="/" 
+            onClick={(e) => {
+              e.preventDefault(); // Mencegah reload halaman langsung
+              handleLogout(); // Jalankan fungsi logout
+              router.push('/'); // Redirect ke halaman login
+            }}
+          >
+            Log out
+          </Link>
         </li>
       </ul>
     </nav>

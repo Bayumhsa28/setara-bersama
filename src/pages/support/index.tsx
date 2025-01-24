@@ -15,7 +15,7 @@ const SupportPage = () => {
           <p>masukkan text</p>
           <div className={styles.cards}>
             {/* Membungkus seluruh card dengan Link */}
-            <Link href="/support/page1">
+            <Link href="/support/consultation">
               <div className={styles.card}>
                 <h2>Counsultation</h2>
                 <p>isi teks...</p>

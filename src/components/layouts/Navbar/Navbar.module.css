@@ -75,8 +75,8 @@
   transform: translateY(-8px) rotate(-45deg);
 }
 
-.logout-button {
-  background-color: #f44336; /* Warna merah untuk logout */
+/* .logout-button {
+  background-color: #f44336;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -85,8 +85,8 @@
 }
 
 .logout-button:hover {
-  background-color: #d32f2f; /* Warna lebih gelap saat hover */
-}
+  background-color: #d32f2f;
+} */
 
 /* Responsive Styles */
 @media (max-width: 500px) {
