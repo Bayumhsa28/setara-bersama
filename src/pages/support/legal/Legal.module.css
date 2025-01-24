@@ -1,0 +1,66 @@
+.container {
+  min-height: 100vh; /* Memastikan kontainer memenuhi seluruh tinggi layar */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content {
+  flex: 1; /* Memastikan elemen ini menggunakan sisa ruang */
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+/* Hero section */
+.hero {
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+  padding: 20px;
+  background-color: #f8f9fa; /* Putih abu-abu muda */
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 
+              0 4px 6px rgba(0, 0, 0, 0.15);
+  margin-bottom: 20px; /* Menambahkan jarak antar elemen hero */
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formLabel {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.formInput,
+.formTextarea {
+  margin-top: 5px;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.formTextarea {
+  height: 100px;
+}
+
+.formButton {
+  margin-top: 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.formButton:hover {
+  background-color: #45a049;
+}

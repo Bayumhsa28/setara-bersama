@@ -1,0 +1,117 @@
+/* Navbar Umum */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #6a0dad; /* Ungu simbol kesetaraan gender */
+  color: white;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Brand Logo */
+.brand {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+/* Navigation Links */
+.navLinks {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+.navLinks li a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.navLinks li a:hover {
+  color: #d4a5ff; /* Lembut untuk hover */
+}
+
+/* Hamburger Menu untuk Layar Kecil */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 32px;
+  top: 24px;
+}
+
+.bar {
+  width: 30px;
+  height: 4px;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+  border-radius: 2px;
+}
+
+/* Animasi Hamburger Menu */
+.hamburger.open .bar:nth-child(1) {
+  transform: translateY(8px) rotate(48deg);
+}
+.hamburger.open .bar:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.logout-button {
+  background-color: #f44336; /* Warna merah untuk logout */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.logout-button:hover {
+  background-color: #d32f2f; /* Warna lebih gelap saat hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 500px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .navLinks {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: #6a0dad;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s ease;
+  }
+
+  .navLinks.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}

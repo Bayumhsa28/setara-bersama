@@ -3,18 +3,22 @@
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Pastikan elemen html dan body memenuhi tinggi viewport */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+/* Container utama untuk membuat footer di bawah */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
+
+
+
 
 body {
   color: var(--foreground);
@@ -35,8 +39,3 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
