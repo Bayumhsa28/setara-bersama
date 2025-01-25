@@ -15,14 +15,13 @@ export default function Counseling() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
-  // Ambil data cookies
   const name = Cookies.get("user_name");
   const email = Cookies.get("user_email");
   const role = Cookies.get("user_role");
 
   useEffect(() => {
     if (!name || !email || role !== "1") {
-      router.push("/"); // Arahkan ke halaman login jika tidak ada cookies atau role tidak valid
+      router.push("/");
     }
   }, [name, email, role, router]);
 
@@ -57,16 +56,10 @@ export default function Counseling() {
 
       if (sessionType === "low-cost") {
         setPaymentDetails("Rekening: 123-456-7890 atas nama XYZ.");
-        setShowPaymentPopup(true); // Menampilkan pop-up pembayaran
+        setShowPaymentPopup(true);
       } else {
-        setShowCodePopup(true); // Menampilkan pop-up room number untuk gratis
-        setShowCodePopup2(false); // Tidak menampilkan pop-up kedua
+        setShowCodePopup(true); // Untuk sesi gratis
       }
-
-      setTimeout(() => {
-        setShowCodePopup(false);
-        setShowCodePopup2(false);
-      }, 15000);
     } else {
       alert("Gagal mengirim permintaan.");
     }
@@ -80,7 +73,6 @@ export default function Counseling() {
 
     const data = { name, email, role, session_type: "low-cost" };
 
-    // Kirim data ke server setelah tombol "Done" diklik
     const res = await fetch("/api/counseling", {
       method: "POST",
       headers: {
@@ -94,17 +86,8 @@ export default function Counseling() {
       setRoomNumber(result.room_number);
       setCode(result.code);
 
-      // Menutup pop-up pembayaran dan menampilkan pop-up kedua (room number dan kode)
-      setShowPaymentPopup(false);
-      setShowCodePopup(true); // Menampilkan pop-up kode
-      setShowCodePopup2(true); // Menampilkan pop-up nomor room
-
-      // Menutup pop-up kode setelah 15 detik
-      setTimeout(() => {
-        setShowCodePopup(false);
-        setShowCodePopup2(false);
-      }, 15000);
-
+      setShowPaymentPopup(false); // Tutup modal pembayaran
+      setShowCodePopup2(true); // Tampilkan modal kode
     } else {
       const errorResponse = await res.json();
       alert(errorResponse.message || "Gagal menyimpan data.");
@@ -114,6 +97,7 @@ export default function Counseling() {
   };
 
   const handleModalClose = () => {
+    // Tutup semua modal
     setShowCodePopup(false);
     setShowPaymentPopup(false);
     setShowCodePopup2(false);
@@ -135,8 +119,10 @@ export default function Counseling() {
                 <option value="free">Gratis</option>
                 <option value="low-cost">Berbiaya Rendah</option>
               </select>
-              
-              <button type="submit" className={styles.formButton}>Daftar Konseling</button>
+
+              <button type="submit" className={styles.formButton}>
+                Daftar Konseling
+              </button>
             </form>
           </section>
         </div>
@@ -148,7 +134,9 @@ export default function Counseling() {
               <h2>Registrasi Sesi Berhasil!</h2>
               <p>Room Number: {roomNumber}</p>
               <p>Code: {code}</p>
-              <button onClick={handleModalClose} className={styles["modal-button"]}>OK</button>
+              <button onClick={handleModalClose} className={styles["modal-button"]}>
+                OK
+              </button>
             </div>
           </div>
         )}
@@ -159,7 +147,9 @@ export default function Counseling() {
             <div className={styles.modalContent}>
               <h2>Silakan Transfer</h2>
               <p>{paymentDetails}</p>
-              <button onClick={handlePaymentDone} className={styles["modal-button"]}>Done</button>
+              <button onClick={handlePaymentDone} className={styles["modal-button"]}>
+                Done
+              </button>
             </div>
           </div>
         )}
@@ -171,7 +161,9 @@ export default function Counseling() {
               <h2>Registrasi Sesi Berhasil!</h2>
               <p>Room Number: {roomNumber}</p>
               <p>Code: {code}</p>
-              <button onClick={handleModalClose} className={styles["modal-button"]}>OK</button>
+              <button onClick={handleModalClose} className={styles["modal-button"]}>
+                OK
+              </button>
             </div>
           </div>
         )}
