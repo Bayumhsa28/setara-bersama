@@ -7,7 +7,7 @@ import styles from "./RoomChat.module.css";
 
 const RoomChat = () => {
   const [roomNumber, setRoomNumber] = useState<string | null>(null);
-  console.log("Room Number1:", roomNumber);
+  
   const [chats, setChats] = useState<{
     name: string;
     email: string;
@@ -16,8 +16,8 @@ const RoomChat = () => {
   }[]>([]);
   const [message, setMessage] = useState("");
   const router = useRouter();
-  const { room_number } = router.query;
-  console.log("Room Number2:", room_number);
+  const { room } = router.query;
+  
   const name = Cookies.get("user_name");
   const email = Cookies.get("user_email");
   const role = Cookies.get("user_role");
@@ -28,14 +28,14 @@ const RoomChat = () => {
       return;
     }
 
-    if (room_number) {
-      setRoomNumber(room_number as string);
-      console.log("Room Number set:", setRoomNumber);
+    if (room) {
+      setRoomNumber(room as string);
+      
     }
 
     const fetchChats = async () => {
       try {
-        const res = await fetch(`/api/roomChat?room_number=${room_number}`);
+        const res = await fetch(`/api/roomChat?room=${room}`);
         if (res.ok) {
           const data = await res.json();
           setChats(data.chats);
@@ -47,24 +47,24 @@ const RoomChat = () => {
       }
     };
 
-    if (room_number) {
+    if (room) {
       fetchChats();
     }
-  }, [name, email, role, room_number, router]);
+  }, [name, email, role, room, router]);
 
   const handleSendMessage = async () => {
     if (!message.trim()) return;
 
-    // Convert room_number to integer before sending
-    const roomNumberInt = parseInt(room_number as string, 10);
+    // Convert room to integer before sending
+    const roomNumberInt = parseInt(room as string, 10);
 
-    console.log("Room Number3:", roomNumberInt);
+    
 
     try {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, role, message, room_number: roomNumberInt }),
+        body: JSON.stringify({ name, email, role, message, room: roomNumberInt }),
       });
 
       if (res.ok) {
