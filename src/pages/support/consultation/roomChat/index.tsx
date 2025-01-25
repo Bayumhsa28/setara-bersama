@@ -30,12 +30,11 @@ const RoomChat = () => {
 
     if (room) {
       setRoomNumber(room as string);
-      
     }
 
     const fetchChats = async () => {
       try {
-        const res = await fetch(`/api/roomChat?room=${room}`);
+        const res = await fetch(`/api/Chat?room_number=${room}`);
         if (res.ok) {
           const data = await res.json();
           setChats(data.chats);
@@ -58,13 +57,11 @@ const RoomChat = () => {
     // Convert room to integer before sending
     const roomNumberInt = parseInt(room as string, 10);
 
-    
-
     try {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, role, message, room: roomNumberInt }),
+        body: JSON.stringify({ name, email, role, message, room_number: roomNumberInt }),
       });
 
       if (res.ok) {
