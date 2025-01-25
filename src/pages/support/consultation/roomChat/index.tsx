@@ -7,7 +7,6 @@ import styles from "./RoomChat.module.css";
 
 const RoomChat = () => {
   const [roomNumber, setRoomNumber] = useState<string | null>(null);
-  
   const [chats, setChats] = useState<{
     name: string;
     email: string;
@@ -17,7 +16,7 @@ const RoomChat = () => {
   const [message, setMessage] = useState("");
   const router = useRouter();
   const { room } = router.query;
-  
+
   const name = Cookies.get("user_name");
   const email = Cookies.get("user_email");
   const role = Cookies.get("user_role");
@@ -33,8 +32,9 @@ const RoomChat = () => {
     }
 
     const fetchChats = async () => {
+      if (!room) return; // Cegah fetch jika room kosong
       try {
-        const res = await fetch(`/api/Chat?room_number=${room}`);
+        const res = await fetch(`/api/chat?room_number=${room}`);
         if (res.ok) {
           const data = await res.json();
           setChats(data.chats);
@@ -46,15 +46,12 @@ const RoomChat = () => {
       }
     };
 
-    if (room) {
-      fetchChats();
-    }
+    fetchChats(); // Memanggil fetchChats saat komponen dimuat atau room berubah
   }, [name, email, role, room, router]);
 
   const handleSendMessage = async () => {
     if (!message.trim()) return;
 
-    // Convert room to integer before sending
     const roomNumberInt = parseInt(room as string, 10);
 
     try {
@@ -89,6 +86,7 @@ const RoomChat = () => {
               <p>
                 <strong>{chat.name}:</strong> {chat.message}
               </p>
+              <br />
               <small>{chat.time}</small>
             </div>
           ))}
