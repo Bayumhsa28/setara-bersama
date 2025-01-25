@@ -22,14 +22,6 @@ export default async function handler(req, res) {
     try {
       await client.connect();
 
-      // const checkExistingRoomQuery = `SELECT * FROM account_conseling WHERE email = $1 AND session_type = $2`;
-      // const existingRoomResult = await client.query(checkExistingRoomQuery, [email, session_type]);
-
-      // if (existingRoomResult.rows.length > 0) {
-      //   res.status(400).json({ message: "Sesi sudah terdaftar." });
-      //   return;
-      // }
-
       const roomQuery = `SELECT MAX(room_number) FROM account_conseling`;
       const roomResult = await client.query(roomQuery);
       const newRoomNumber = roomResult.rows[0].max + 1 || 1;

@@ -1,0 +1,139 @@
+/* Container utama */
+.container {
+  min-height: 100vh; /* Membuat kontainer memenuhi tinggi layar */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Main Content */
+.content {
+  flex: 1; /* Memastikan elemen ini menggunakan sisa ruang */
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+/* Hero section */
+.hero {
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+  padding: 20px;
+  background-color: #f8f9fa; /* Putih abu-abu muda */
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 
+              0 4px 6px rgba(0, 0, 0, 0.15);
+  margin-bottom: 20px; /* Menambahkan jarak antar elemen hero */
+}
+
+/* Hero section untuk visi-misi */
+.hero1 {
+  display: flex;
+  justify-content: space-between; /* Membuat visi dan misi bersebelahan */
+  max-width: 1000px; /* Memastikan konten tetap responsif */
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 20px; /* Menambahkan jarak antar elemen hero */
+}
+
+.hero3 {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Agar lebar mengikuti lebar kontainer */
+  max-width: 1000px; /* Lebar maksimal 1000px */
+  padding: 20px;
+  background-color: #f8f9fa; /* Putih abu-abu muda */
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 
+              0 4px 6px rgba(0, 0, 0, 0.15);
+  margin-bottom: 20px; /* Menambahkan jarak antar elemen hero */
+}
+
+/* Media Query untuk layar yang lebih kecil */
+@media (max-width: 768px) {
+  .hero3 {
+    width: 90%; /* Mengurangi lebar menjadi 90% dari lebar layar */
+  }
+}
+
+
+/* Kotak untuk Visi dan Misi */
+.vision,
+.mission {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 48%; /* Lebar 48% untuk setiap kotak */
+  padding: 20px;
+  background-color: #ffffff; /* Warna latar belakang putih */
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 
+              0 4px 6px rgba(0, 0, 0, 0.15);
+  text-align: center; /* Membuat teks di dalam kotak menjadi rata tengah */
+}
+
+/* Heading */
+.heading {
+  font-size: 28px;
+  font-weight: bold;
+  color: #6a0dad;
+  margin-bottom: 16px;
+  text-align: center; /* Memastikan heading rata tengah */
+}
+
+
+/* Paragraf */
+.paragraph {
+  color: #4b3a5a; /* Kombinasi ungu yang lebih gelap untuk teks */
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+/* Tombol */
+.button-group {
+  display: flex;
+  justify-content: end;
+  gap: 20px; /* Jarak antar tombol */
+  /* margin-top: 16px; */
+}
+
+.primary-button,
+.secondary-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.primary-button {
+  background-color: #6a0dad; /* Ungu */
+  color: #ffffff; /* Teks putih */
+}
+
+.primary-button:hover {
+  background-color: #550b9e; /* Ungu lebih gelap saat hover */
+  transform: scale(1.05);
+}
+
+.secondary-button {
+  background-color: #eaf6e7; /* Hijau pastel */
+  color: #6a0dad; /* Ungu */
+  border: 2px solid #6a0dad; /* Border ungu */
+}
+
+.secondary-button:hover {
+  background-color: #d9f0d6; /* Hijau lebih terang saat hover */
+  transform: scale(1.05);
+}
+
+.listKolaborator{
+  margin-left: 30px;
+}

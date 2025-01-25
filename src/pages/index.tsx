@@ -35,8 +35,11 @@ export default function Login() {
       // Simpan token ke localStorage
       localStorage.setItem('token', data.token);
 
-      // Redirect setelah login
-      router.push('/home');
+      if (data.user.role === 2) {
+        router.push('/admin');  // Jika user_role 2, arahkan ke halaman admin
+      } else {
+        router.push('/home');  // Jika bukan, arahkan ke halaman home
+      }
     } catch (err: any) {
       setError(err.message);
     }

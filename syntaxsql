@@ -31,3 +31,11 @@ CREATE TABLE account_chat (
   room_number INTEGER NOT NULL,
   message TEXT NOT NULL
 );
+
+untuk mendapatkan password hasher
+node password-hasher/hashPassword.js
+
+untuk menginsert manual account admin
+INSERT INTO account (nama, email, gender, password, role)
+VALUES
+('Admin Name', 'admin@gmail.com', 'm', '$2a$10$B16DyixFcllKYGn4MZ/iE.aj8fW3Ms/xd6KFnlRjHgVbdek2xszB6', 2);
