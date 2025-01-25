@@ -21,3 +21,13 @@ CREATE TABLE account_conseling (
   room_number INT,
   expiration_date TIMESTAMP
 );
+
+table chat
+CREATE TABLE account_chat (
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  role VARCHAR(50) NOT NULL,
+  time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  room_number INTEGER NOT NULL,
+  message TEXT NOT NULL
+);

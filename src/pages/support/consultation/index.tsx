@@ -28,7 +28,6 @@ const Consultation = () => {
         const res = await fetch(`/api/consultation?email=${email}`);
         if (res.ok) {
           const data = await res.json();
-          console.log("Rooms fetched:", data.rooms); // Tambahkan log ini
           setRooms(data.rooms);
         } else {
           console.error("Gagal mengambil daftar room");
@@ -37,8 +36,6 @@ const Consultation = () => {
         console.error("Error:", error);
       }
     };
-    
-    
 
     fetchRooms();
   }, [name, email, role, router]);
@@ -66,7 +63,7 @@ const Consultation = () => {
               <div key={room.room_number} className={styles.room}>
                 <MdChatBubbleOutline className={styles.roomIcon} />
                 <Link
-                  href={`/support/consultation/addRoom?room=${room.room_number}`}
+                  href={`/support/consultation/roomChat?room=${room.room_number}`}
                   className={styles.roomLink}
                 >
                   {room.name}
