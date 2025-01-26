@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
-import Navbar from "@/components/layouts/Navbar";
+import Navbar from "@/components/layouts/NavbarAdmin";
 import Footer from "@/components/layouts/Footer";
 import styles from "./RoomChat.module.css";
 
@@ -23,7 +23,7 @@ const RoomChat = () => {
 
   useEffect(() => {
     if (!name || !email || role !== "2") {
-      router.push("/");  // Redirect if the user is not an admin
+      router.push("/");
       return;
     }
 
