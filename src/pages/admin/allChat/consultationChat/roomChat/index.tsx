@@ -23,7 +23,7 @@ const RoomChat = () => {
 
   useEffect(() => {
     if (!name || !email || role !== "2") {
-      router.push("/");
+      router.push("/");  // Redirect if the user is not an admin
       return;
     }
 
