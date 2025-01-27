@@ -90,21 +90,21 @@ const CommentPopup: React.FC<CommentPopupProps> = ({ closePopup, storyId, onSubm
 
         {/* Tampilkan komentar yang ada di database */}
         <div className={styles.commentsList}>
-  {comments.map((commentData, index) => (
-    <div key={index} className={styles.comment}>
-      <div className={styles.left}>
-        <img src="/images/profile.png" alt="Profile" className={styles.profileImage} />
-        <div>
-          <div className={styles.userName}>{commentData.nama}</div>
-          <p>{commentData.text}</p>
+          {comments.map((commentData, index) => (
+            <div key={index} className={styles.comment}>
+              <div className={styles.left}>
+                <img src="/images/profile.png" alt="Profile" className={styles.profileImage} />
+                <div>
+                  <div className={styles.userName}>{commentData.nama}</div>
+                  <p>{commentData.text}</p>
+                </div>
+              </div>
+              <div className={styles.right}>
+                <span>{commentData.created_at}</span>
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
-      <div className={styles.right}>
-        <span>{commentData.created_at}</span>
-      </div>
-    </div>
-  ))}
-</div>
 
 
         {/* Form untuk mengirim komentar */}

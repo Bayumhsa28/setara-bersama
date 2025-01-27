@@ -109,11 +109,16 @@ export default function Home() {
             <div className={styles.profileContainer}>
               <div className={styles.textInputContainer1}>
                 <StoryImage src={story.photos[0]} />
-                <Image
-                  src={commentButton}
-                  alt="Comment Button"
-                  onClick={() => handleCommentButtonClick(story.id)} // Kirim ID cerita
-                />
+                <div className={styles.textInputContainer2}>
+                  <Image
+                    src={commentButton}
+                    alt="Comment Button"
+                    className="commentButton"
+                    onClick={() => handleCommentButtonClick(story.id)} // Kirim ID cerita
+                  />
+
+                </div>
+
               </div>
             </div>
           </div>

@@ -16,9 +16,7 @@ const FirstShow = () => {
   };
 
   const prevSlide = () => {
-    setSlideIndex(
-      (prevIndex) => (prevIndex - 1 + slides.length) % slides.length,
-    );
+    setSlideIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length);
   };
 
   const closePopup = () => {
@@ -44,7 +42,7 @@ const FirstShow = () => {
             width={110}
             height={252}
           />
-          <div style={{ backgroundColor: "white", width: "400px", height: "100px", borderRadius: "10px" , alignContent: "center"}}>
+          <div className={styles.textContainer}>
             <p className={styles.text}>
               {slides[slideIndex]}
             </p>
