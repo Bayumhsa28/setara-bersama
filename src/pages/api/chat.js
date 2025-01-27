@@ -28,7 +28,7 @@ const handler = async (req, res) => {
       console.error("Error during GET:", error);
       res.status(500).json({ message: "Gagal mengambil chat." });
     }
-  } 
+  }
   // Handle POST request to send a new message
   else if (req.method === "POST") {
     const { name, email, role, message, room_number } = req.body;
@@ -38,7 +38,7 @@ const handler = async (req, res) => {
       return res.status(400).json({ message: "Data tidak lengkap." });
     }
 
-    console.log("Request Body:", req.body);  // Debug log
+    console.log("Request Body:", req.body); // Debug log
 
     try {
       const query = `
@@ -48,18 +48,18 @@ const handler = async (req, res) => {
       `;
       const values = [name, email, role, message, room_number];
 
-      console.log("Query Values:", values);  // Debug log
+      console.log("Query Values:", values); // Debug log
 
       const result = await client.query(query, values);
 
-      console.log("Query Result:", result.rows[0]);  // Debug log
+      console.log("Query Result:", result.rows[0]); // Debug log
 
       res.status(201).json(result.rows[0]);
     } catch (error) {
-      console.error("Error during POST:", error);  // Error log
+      console.error("Error during POST:", error); // Error log
       res.status(500).json({ message: "Gagal mengirim pesan." });
     }
-  } 
+  }
   // Method not allowed
   else {
     res.status(405).json({ message: "Metode tidak diizinkan." });

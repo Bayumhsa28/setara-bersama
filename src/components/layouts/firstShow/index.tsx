@@ -4,6 +4,8 @@ import Image from "next/image";
 
 const FirstShow = () => {
   const [slideIndex, setSlideIndex] = useState(0);
+  const [isPopupVisible, setIsPopupVisible] = useState(true); // State untuk menampilkan popup
+
   const slides = [
     "Selamat Datang di Platform Kami!",
     "Kami senang bisa berbagi pengalaman dengan Anda!",
@@ -14,28 +16,46 @@ const FirstShow = () => {
   };
 
   const prevSlide = () => {
-    setSlideIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length);
+    setSlideIndex(
+      (prevIndex) => (prevIndex - 1 + slides.length) % slides.length,
+    );
   };
+
+  const closePopup = () => {
+    setIsPopupVisible(false);
+  };
+
+  if (!isPopupVisible) return null; // Tidak menampilkan popup jika state isPopupVisible = false
 
   return (
     <div className={styles.popup}>
       <div className={styles.popupContent}>
+        {/* Tombol Close */}
+        <div className={styles.closeButton} onClick={closePopup}>
+          &times;
+        </div>
+
         <div className={styles.imageContainer}>
           {/* Gambar dan Teks */}
           <Image
-            src="/images/consultation.png"
+            src="/images/woman.png"
             alt="Left"
             className={styles.image}
-            width={150}
-            height={150}
+            width={110}
+            height={252}
           />
-          <p className={styles.text}>{slides[slideIndex]}</p>
+          <div style={{ backgroundColor: "white", width: "400px", height: "100px", borderRadius: "10px" , alignContent: "center"}}>
+            <p className={styles.text}>
+              {slides[slideIndex]}
+            </p>
+          </div>
+
           <Image
-            src="/images/consultation.png"
+            src="/images/man.png"
             alt="Right"
             className={styles.image}
-            width={150}
-            height={150}
+            width={83}
+            height={252}
           />
         </div>
 

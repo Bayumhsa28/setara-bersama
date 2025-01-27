@@ -1,93 +1,111 @@
 .popup {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.popupContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  background: #efd9ff;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  width: 35%;
+  max-width: 1000px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  transition: color 0.3s;
+}
+
+.closeButton:hover {
+  color: #6a0dad; /* Merah saat hover */
+}
+
+.imageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
   
-  .popupContent {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    position: relative;
-    width: 80%;  /* Menambahkan lebar agar tampilan tidak terlalu besar */
-    max-width: 600px;  /* Membatasi lebar maksimal */
-  }
-  
-  .imageContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .image {
-    margin: 0 15px;
-    border-radius: 8px; /* Menambahkan radius untuk gambar agar terlihat lebih lembut */
-  }
-  
-  .text {
-    font-size: 18px;
-    text-align: center;
-    margin: 20px 0;
-    font-weight: bold; /* Menambah ketebalan teks agar lebih menonjol */
-    color: #333; /* Warna teks */
-  }
-  
-  .dotsAndButtons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .dots {
-    display: flex;
-    justify-content: center;
-    /* margin-right: 10px; Memberi ruang antara tombol dan indikator */
-  }
-  
-  .dot {
-    width: 12px;
-    height: 12px;
-    margin: 0 8px;
-    border-radius: 50%;
-    background-color: #ddd;
-    transition: background-color 0.3s;
-  }
-  
-  .activeDot {
-    background-color: #4CAF50; /* Warna hijau untuk menandakan slide aktif */
-  }
-  
-  .navButtonLeft,
-  .navButtonRight {
-    font-size: 35px;
-    cursor: pointer;
-    padding: 12px;
-    background-color: #fff;
-    /* border: 1px solid #ccc; */
-    border-radius: 50%;
-    transition: background-color 0.3s, transform 0.3s;
-  }
-  
-  .navButtonLeft:hover,
-  .navButtonRight:hover {
-    /* background-color: #f1f1f1; */
-    transform: scale(1.1); /* Memberi efek pembesaran saat hover */
-  }
-  
-  .navButtonLeft:active,
-  .navButtonRight:active {
-    transform: scale(0.95); /* Efek sedikit mengecil saat tombol diklik */
-  }
-  
+}
+
+.image {
+  margin: 0 15px;
+  border-radius: 8px;
+}
+
+.text {
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+}
+
+.dotsAndButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  margin: 0 8px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  transition: background-color 0.3s;
+}
+
+.activeDot {
+  background-color: #6a0dad;
+}
+
+.navButtonLeft,
+.navButtonRight {
+  font-size: 35px;
+  cursor: pointer;
+  padding: 12px;
+  color: #ffffff;
+  /* background-color: #fff; */
+  /* border-radius: 50%; */
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.navButtonLeft:hover,
+.navButtonRight:hover {
+  color: #6a0dad;
+  transform: scale(1.1);
+}
+
+.navButtonLeft:active,
+.navButtonRight:active {
+  transform: scale(0.95);
+}

@@ -9,7 +9,9 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { MdChatBubbleOutline } from "react-icons/md";
 
 const ConsultationChat = () => {
-  const [rooms, setRooms] = useState<{ room_number: number; name: string }[]>([]);
+  const [rooms, setRooms] = useState<{ room_number: number; name: string }[]>(
+    [],
+  );
   const router = useRouter();
 
   const name = Cookies.get("user_name");
@@ -18,7 +20,7 @@ const ConsultationChat = () => {
 
   useEffect(() => {
     if (!name || !email || role !== "2") {
-      router.push("/");  // Redirect if the user is not an admin
+      router.push("/"); // Redirect if the user is not an admin
       return;
     }
 

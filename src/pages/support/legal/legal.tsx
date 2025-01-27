@@ -31,25 +31,38 @@ export default function LegalSupport() {
   return (
     <div className={styles.container}>
       <Navbar />
-      
+
       <main className={styles.content}>
-      <div className={styles.hero}>
+        <div className={styles.hero}>
+          <h1>Bimbingan Hukum</h1>
+          <p>
+            Dapatkan bantuan hukum terkait hak-hak gender dan cara melaporkan
+            diskriminasi.
+          </p>
 
-        <h1>Bimbingan Hukum</h1>
-        <p>Dapatkan bantuan hukum terkait hak-hak gender dan cara melaporkan diskriminasi.</p>
+          <form onSubmit={handleSubmit} className={styles.form}>
+            <label className={styles.formLabel}>Topik Permasalahan:</label>
+            <input
+              type="text"
+              name="topic"
+              required
+              className={styles.formInput}
+            />
 
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <label className={styles.formLabel}>Topik Permasalahan:</label>
-          <input type="text" name="topic" required className={styles.formInput} />
+            <label className={styles.formLabel}>Deskripsi:</label>
+            <textarea
+              name="description"
+              required
+              className={styles.formTextarea}
+            ></textarea>
 
-          <label className={styles.formLabel}>Deskripsi:</label>
-          <textarea name="description" required className={styles.formTextarea}></textarea>
-
-          <button type="submit" className={styles.formButton}>Ajukan Permintaan</button>
-        </form>
+            <button type="submit" className={styles.formButton}>
+              Ajukan Permintaan
+            </button>
+          </form>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );

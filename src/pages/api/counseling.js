@@ -1,4 +1,4 @@
-import { Client } from 'pg';
+import { Client } from "pg";
 
 // Fungsi untuk menghasilkan kode acak 6 digit
 function generateRandomCode() {
@@ -12,10 +12,10 @@ export default async function handler(req, res) {
     const code = generateRandomCode(); // Generate 6 digit random code
 
     const client = new Client({
-      user: 'postgres',
-      host: 'localhost',
-      database: 'postgres',
-      password: '',
+      user: "postgres",
+      host: "localhost",
+      database: "postgres",
+      password: "",
       port: 5432,
     });
 
@@ -59,10 +59,10 @@ export async function paymentHandler(req, res) {
     const code = generateRandomCode(); // Generate 6 digit random code
 
     const client = new Client({
-      user: 'postgres',
-      host: 'localhost',
-      database: 'postgres',
-      password: '',
+      user: "postgres",
+      host: "localhost",
+      database: "postgres",
+      password: "",
       port: 5432,
     });
 
@@ -70,7 +70,10 @@ export async function paymentHandler(req, res) {
       await client.connect();
 
       const checkExistingRoomQuery = `SELECT * FROM account_conseling WHERE email = $1 AND session_type = $2`;
-      const existingRoomResult = await client.query(checkExistingRoomQuery, [email, session_type]);
+      const existingRoomResult = await client.query(checkExistingRoomQuery, [
+        email,
+        session_type,
+      ]);
 
       if (existingRoomResult.rows.length > 0) {
         res.status(400).json({ message: "Sesi sudah terdaftar." });

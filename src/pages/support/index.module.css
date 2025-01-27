@@ -78,9 +78,6 @@
   color: #fff;
 }
 
-
-
-
 @media (max-width: 480px) {
   .cards {
     flex-direction: column; /* Mengubah tata letak card menjadi kolom pada layar sangat kecil */

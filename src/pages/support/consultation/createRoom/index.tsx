@@ -110,7 +110,10 @@ export default function Counseling() {
         <div className={styles.hero}>
           <header className={styles.header}>
             <h1>Konseling Psikologis</h1>
-            <p>Akses ke konselor profesional untuk sesi online gratis atau berbiaya rendah.</p>
+            <p>
+              Akses ke konselor profesional untuk sesi online gratis atau
+              berbiaya rendah.
+            </p>
           </header>
           <section className={styles.section}>
             <form onSubmit={handleSubmit} method="POST">
@@ -134,7 +137,10 @@ export default function Counseling() {
               <h2>Registrasi Sesi Berhasil!</h2>
               <p>Room Number: {roomNumber}</p>
               <p>Code: {code}</p>
-              <button onClick={handleModalClose} className={styles["modal-button"]}>
+              <button
+                onClick={handleModalClose}
+                className={styles["modal-button"]}
+              >
                 OK
               </button>
             </div>
@@ -147,7 +153,10 @@ export default function Counseling() {
             <div className={styles.modalContent}>
               <h2>Silakan Transfer</h2>
               <p>{paymentDetails}</p>
-              <button onClick={handlePaymentDone} className={styles["modal-button"]}>
+              <button
+                onClick={handlePaymentDone}
+                className={styles["modal-button"]}
+              >
                 Done
               </button>
             </div>
@@ -161,7 +170,10 @@ export default function Counseling() {
               <h2>Registrasi Sesi Berhasil!</h2>
               <p>Room Number: {roomNumber}</p>
               <p>Code: {code}</p>
-              <button onClick={handleModalClose} className={styles["modal-button"]}>
+              <button
+                onClick={handleModalClose}
+                className={styles["modal-button"]}
+              >
                 OK
               </button>
             </div>

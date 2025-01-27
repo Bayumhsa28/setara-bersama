@@ -1,25 +1,25 @@
 /* Background Gradien */
 .register-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #E6B3E0, #6a0dad); /* Gradien warna */
-    font-family: 'Arial', sans-serif;
-  }
-  
-  .register-card {
-    background-color: white;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-    text-align: left; /* Menambahkan alignment kiri untuk konten */
-    animation: fadeIn 0.5s ease-out;
-  }
-  
-  /* register.module.css */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #e6b3e0, #6a0dad); /* Gradien warna */
+  font-family: "Arial", sans-serif;
+}
+
+.register-card {
+  background-color: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: left; /* Menambahkan alignment kiri untuk konten */
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* register.module.css */
 .login-link {
   margin-top: 10px;
   text-align: center;
@@ -34,83 +34,83 @@
   text-decoration: underline;
 }
 
-  /* Animasi fade in */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+/* Animasi fade in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  /* Style Judul */
-  .heading {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
-    font-weight: 600;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  /* Style Form */
-  .input-group {
-    margin-bottom: 20px;
-  }
-  
-  .input-group label {
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom: 8px;
-    display: block; /* Pastikan label menjadi block element */
-  }
-  
-  .input-group input,
-  .input-group select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    outline: none;
-    transition: border-color 0.3s ease-in-out;
-  }
-  
-  .input-group input:focus,
-  .input-group select:focus {
-    border-color: #E6B3E0;
-  }
-  
-  /* Style tombol - Ganti selector global button dengan kelas .button */
-  .button {
-    background-color: #E6B3E0;
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    width: 100%;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .button:hover {
-    background-color: #2563eb;
-  }
-  
-  .button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
-  /* Style pesan error */
-  .error-message {
-    color: red;
-    margin-top: 15px;
-    font-size: 14px;
-  }
+}
 
-  /* Gaya Modal */
+/* Style Judul */
+.heading {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Style Form */
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  display: block; /* Pastikan label menjadi block element */
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  border-color: #e6b3e0;
+}
+
+/* Style tombol - Ganti selector global button dengan kelas .button */
+.button {
+  background-color: #e6b3e0;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #6a0dad;
+}
+
+.button:disabled {
+  background-color: #adadad;
+  cursor: not-allowed;
+}
+
+/* Style pesan error */
+.error-message {
+  color: red;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+/* Gaya Modal */
 .modal {
   position: fixed;
   top: 0;
@@ -143,8 +143,8 @@
 }
 
 .modal-button {
-  background-color: #E6B3E0;
-  color: white;
+  background-color: #e6b3e0;
+  /* color: white; */
   padding: 10px 20px;
   border: none;
   border-radius: 8px;
@@ -161,16 +161,14 @@
   outline: none;
 }
 
-  
-  /* Responsif untuk layar kecil */
-  @media (max-width: 480px) {
-    .register-card {
-      padding: 20px;
-      width: 90%;
-    }
-  
-    .heading {
-      font-size: 20px;
-    }
+/* Responsif untuk layar kecil */
+@media (max-width: 480px) {
+  .register-card {
+    padding: 20px;
+    width: 90%;
   }
-  
+
+  .heading {
+    font-size: 20px;
+  }
+}

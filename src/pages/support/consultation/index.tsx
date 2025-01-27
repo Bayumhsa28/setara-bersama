@@ -9,7 +9,9 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { MdChatBubbleOutline } from "react-icons/md";
 
 const Consultation = () => {
-  const [rooms, setRooms] = useState<{ room_number: number; name: string }[]>([]);
+  const [rooms, setRooms] = useState<{ room_number: number; name: string }[]>(
+    [],
+  );
   const router = useRouter();
 
   const name = Cookies.get("user_name");

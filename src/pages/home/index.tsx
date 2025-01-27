@@ -1,64 +1,60 @@
-// pages/home/index.tsx
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Navbar from "@/components/layouts/Navbar";
-import FirstShow from "@/components/layouts/firstShow"; // Perbaiki penulisan import
+import FirstShow from "@/components/layouts/firstShow";
 import Footer from "@/components/layouts/Footer";
-import Cookies from 'js-cookie'; // Import js-cookie
+import Cookies from "js-cookie";
 import styles from "./Home.module.css";
+import Image from "next/image";
+import imageProf from "../../../public/images/profile.png";
+import UploadStory from "@/components/layouts/uploadStory"; // Import UploadStory
 
 export default function Home() {
   const router = useRouter();
-  const name = Cookies.get('user_name');
-  const email = Cookies.get('user_email');
-  const role = Cookies.get('user_role');
+  const name = Cookies.get("user_name");
+  const email = Cookies.get("user_email");
+  const role = Cookies.get("user_role");
+  const [showPopUp, setShowPopUp] = useState(false); // Menyimpan state pop-up
 
   useEffect(() => {
-    // Jika tidak ada cookie, arahkan ke halaman login
-    if (!name || !email || role !== '1') {
-      router.push("/login"); // Pastikan URL login benar
+    if (!name || !email || role !== "1") {
+      router.push("/login");
     }
   }, [name, email, role, router]);
+
+  const handleHeroClick = () => {
+    setShowPopUp(true); // Menampilkan pop-up saat div hero diklik
+  };
+
+  const handleInputClick = () => {
+    setShowPopUp(true); // Menampilkan pop-up saat input diklik
+  };
+
+  const closePopUp = () => {
+    setShowPopUp(false); // Menutup pop-up jika di-klik close button
+  };
 
   return (
     <div className="container">
       <Navbar />
       <main className={styles.content}>
-        <FirstShow /> {/* Gunakan FirstShow di sini */}
-        <div className={styles.hero}>
-          <h1 className={styles.heading}>Tujuan Web:</h1>
-          <p className={styles.paragraph}>
-            Kami hadir untuk mendukung mereka yang terdampak ketimpangan gender dan berjuang menciptakan dunia yang setara.
-          </p>
-          <div className={styles["button-group"]}>
-            <button className="primary-button">Dapatkan Dukungan</button>
-            <button className="secondary-button">Pelajari Hak Anda</button>
+        <FirstShow />
+        <div className={styles.hero} onClick={handleHeroClick}>
+          <div className={styles.profileContainer}>
+            <Image src={imageProf} alt="Profile Picture" className={styles.profileImage} />
+            <div className={styles.textInputContainer}>
+              <input
+                className={styles.input}
+                placeholder="Ceritakan pengalaman anda di sini"
+                onClick={handleInputClick} // Menampilkan pop-up setiap klik input
+              />
+            </div>
           </div>
         </div>
-
-        <div className={styles.hero1}>
-          <div className={styles.vision}>
-            <h1 className={styles.heading}>Visi:</h1>
-            <p className={styles.paragraph}>
-              Mewujudkan masyarakat inklusif yang bebas dari ketidakadilan gender.
-            </p>
-          </div>
-          <div className={styles.mission}>
-            <h1 className={styles.heading}>Misi:</h1>
-            <p className={styles.paragraph}>
-              Memberikan edukasi, dukungan psikologis, dan pemberdayaan bagi individu yang menghadapi diskriminasi gender.
-            </p>
-          </div>
-        </div>
-
-        <div className={styles.hero3}>
-          <h1 className={styles.heading}>Partner dan kolaborator:</h1>
-          <ul className={styles.listKolaborator}>
-            <li>
-              (organisasi terkait kesetaraan gender)
-            </li>
-          </ul>
-        </div>
+        {/* Kondisi untuk menampilkan pop-up */}
+        {showPopUp && (
+          <UploadStory closePopup={closePopUp} />
+        )}
       </main>
       <Footer />
     </div>

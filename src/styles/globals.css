@@ -4,7 +4,8 @@
 }
 
 /* Pastikan elemen html dan body memenuhi tinggi viewport */
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -16,9 +17,6 @@ html, body {
   flex-direction: column;
   min-height: 100vh;
 }
-
-
-
 
 body {
   color: var(--foreground);
@@ -38,4 +36,3 @@ a {
   color: inherit;
   text-decoration: none;
 }
-

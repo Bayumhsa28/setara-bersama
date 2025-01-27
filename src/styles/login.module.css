@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #E6B3E0;
+  background: linear-gradient(135deg, #e6b3e0, #6a0dad);
   padding: 1rem;
 }
 
@@ -59,7 +59,7 @@
 
 .input-group input:focus {
   outline: none;
-  border-color: #E6B3E0;
+  border-color: #e6b3e0;
 }
 
 .button {
@@ -67,7 +67,7 @@
   padding: 0.8rem;
   font-size: 16px;
   color: white;
-  background-color: #E6B3E0;
+  background-color: #e6b3e0;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -75,7 +75,7 @@
 }
 
 .button:hover {
-  background-color: #2563eb;
+  background-color: #6a0dad;
 }
 
 .error-message {

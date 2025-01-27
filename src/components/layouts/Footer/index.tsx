@@ -1,4 +1,4 @@
-import styles from './Footer.module.css';
+import styles from "./Footer.module.css";
 
 const Footer: React.FC = () => {
   return (
@@ -9,5 +9,3 @@ const Footer: React.FC = () => {
 };
 
 export default Footer;
-
-  

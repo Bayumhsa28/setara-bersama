@@ -1,9 +1,11 @@
+// pages/home/index.tsx
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import Navbar from "@/components/layouts/NavbarAdmin";
+import Navbar from "@/components/layouts/Navbar";
+import FirstShow from "@/components/layouts/firstShow"; // Perbaiki penulisan import
 import Footer from "@/components/layouts/Footer";
 import Cookies from "js-cookie"; // Import js-cookie
-import styles from "./Admin.module.css";
+import styles from "./Home.module.css";
 
 export default function Home() {
   const router = useRouter();
@@ -13,8 +15,8 @@ export default function Home() {
 
   useEffect(() => {
     // Jika tidak ada cookie, arahkan ke halaman login
-    if (!name || !email || role != 2) {
-      router.push("/");
+    if (!name || !email || role !== "1") {
+      router.push("/login"); // Pastikan URL login benar
     }
   }, [name, email, role, router]);
 
@@ -22,6 +24,7 @@ export default function Home() {
     <div className="container">
       <Navbar />
       <main className={styles.content}>
+        <FirstShow /> {/* Gunakan FirstShow di sini */}
         <div className={styles.hero}>
           <h1 className={styles.heading}>Tujuan Web:</h1>
           <p className={styles.paragraph}>
@@ -33,7 +36,6 @@ export default function Home() {
             <button className="secondary-button">Pelajari Hak Anda</button>
           </div>
         </div>
-
         <div className={styles.hero1}>
           <div className={styles.vision}>
             <h1 className={styles.heading}>Visi:</h1>
@@ -50,7 +52,6 @@ export default function Home() {
             </p>
           </div>
         </div>
-
         <div className={styles.hero3}>
           <h1 className={styles.heading}>Partner dan kolaborator:</h1>
           <ul className={styles.listKolaborator}>

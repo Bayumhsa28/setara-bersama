@@ -23,14 +23,15 @@
   padding: 20px;
   background-color: #f8f9fa; /* Putih abu-abu muda */
   border-radius: 10px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 
-              0 4px 6px rgba(0, 0, 0, 0.15);
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, 0.2),
+    0 4px 6px rgba(0, 0, 0, 0.15);
   margin-bottom: 20px; /* Menambahkan jarak antar elemen hero */
 }
 
 .header {
   text-align: center;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   padding: 20px;
   border-radius: 8px 8px 0 0;
@@ -61,7 +62,7 @@
 
 .formButton {
   margin-top: 10px;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   cursor: pointer;
@@ -80,7 +81,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #10B981; /* Tailwind Green 500 */
+  background-color: #10b981; /* Tailwind Green 500 */
   color: white;
   padding: 16px 24px;
   border-radius: 8px;
@@ -127,7 +128,7 @@
 }
 
 .modal-button {
-  background-color: #E6B3E0;
+  background-color: #e6b3e0;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -145,7 +146,6 @@
   outline: none;
 }
 
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -156,4 +156,3 @@
     transform: translate(-50%, -50%);
   }
 }
-

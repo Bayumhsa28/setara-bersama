@@ -7,12 +7,14 @@ import styles from "./RoomChat.module.css";
 
 const RoomChat = () => {
   const [roomNumber, setRoomNumber] = useState<string | null>(null);
-  const [chats, setChats] = useState<{
-    name: string;
-    email: string;
-    message: string;
-    time: string;
-  }[]>([]);
+  const [chats, setChats] = useState<
+    {
+      name: string;
+      email: string;
+      message: string;
+      time: string;
+    }[]
+  >([]);
   const [message, setMessage] = useState("");
   const router = useRouter();
   const { room } = router.query;
@@ -58,7 +60,13 @@ const RoomChat = () => {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, role, message, room_number: roomNumberInt }),
+        body: JSON.stringify({
+          name,
+          email,
+          role,
+          message,
+          room_number: roomNumberInt,
+        }),
       });
 
       if (res.ok) {

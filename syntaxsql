@@ -39,3 +39,15 @@ untuk menginsert manual account admin
 INSERT INTO account (nama, email, gender, password, role)
 VALUES
 ('Admin Name', 'admin@gmail.com', 'm', '$2a$10$B16DyixFcllKYGn4MZ/iE.aj8fW3Ms/xd6KFnlRjHgVbdek2xszB6', 2);
+
+
+untuk upload story tablenya
+CREATE TABLE account_story (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    role VARCHAR(50) NOT NULL,
+    story TEXT NOT NULL,
+    photos TEXT[], -- Menggunakan array untuk menyimpan path foto
+    upload_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
