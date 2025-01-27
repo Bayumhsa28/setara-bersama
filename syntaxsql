@@ -51,3 +51,16 @@ CREATE TABLE account_story (
     photos TEXT[], -- Menggunakan array untuk menyimpan path foto
     upload_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+untuk comments
+CREATE TABLE account_comments (
+  id SERIAL PRIMARY KEY,
+  nama VARCHAR(255) NOT NULL,
+  role VARCHAR(50) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  text TEXT NOT NULL,
+  account_story_id INT NOT NULL,
+  created_at TIMESTAMP DEFAULT NOW(),
+  CONSTRAINT fk_account_story FOREIGN KEY (account_story_id) REFERENCES account_story(id) ON DELETE CASCADE
+);
+

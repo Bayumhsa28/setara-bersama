@@ -22,6 +22,7 @@
 
 /* Hero section */
 .hero {
+  position: relative;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -94,6 +95,19 @@
   align-items: center;
   width: 100%;
 }
+
+.textInputContainer2 {
+  position: absolute; /* Untuk menempatkan tombol di posisi tertentu */
+  bottom: 10px; /* Jarak dari bawah */
+  right: 10px; /* Jarak dari kanan */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  width: auto; /* Biarkan ukurannya mengikuti kontennya */
+}
+
+
 
 /* Input style yang menarik */
 .input {
