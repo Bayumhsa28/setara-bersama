@@ -17,7 +17,7 @@ const handler = async (req, res) => {
   if (req.method === "GET") {
     try {
       const query = `
-        SELECT nama, role, email, text, TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at
+        SELECT nama, role, email, text, TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI') AS created_at
         FROM account_comments
         WHERE account_story_id = $1
         ORDER BY created_at ASC;

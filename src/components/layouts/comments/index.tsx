@@ -13,16 +13,30 @@ const CommentPopup: React.FC<CommentPopupProps> = ({ closePopup, storyId, onSubm
   const [userName, setUserName] = useState<string | null>(null);
   const [role, setRole] = useState<string | null>(null);
   const [email, setEmail] = useState<string | null>(null);
+  const [comments, setComments] = useState<any[]>([]); // State untuk menyimpan komentar yang diambil dari backend
 
   useEffect(() => {
-    // Fetch user info from cookies
+    // Ambil informasi pengguna dari cookies
     const name = Cookies.get("user_name");
     const userRole = Cookies.get("user_role");
     const userEmail = Cookies.get("user_email");
     setUserName(name);
     setRole(userRole);
     setEmail(userEmail);
-  }, []);
+
+    // Fetch data komentar dari backend
+    const fetchComments = async () => {
+      try {
+        const response = await fetch(`/api/comments?account_story_id=${storyId}`);
+        const data = await response.json();
+        setComments(data.comments); // Menyimpan komentar yang diambil
+      } catch (error) {
+        console.error("Error fetching comments:", error);
+      }
+    };
+
+    fetchComments(); // Memanggil fungsi untuk mengambil komentar
+  }, [storyId]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,7 +70,7 @@ const CommentPopup: React.FC<CommentPopupProps> = ({ closePopup, storyId, onSubm
       alert("Komentar berhasil dikirim!");
       setComment(""); // Reset komentar
       onSubmitComment(comment); // Kirim komentar ke parent
-      closePopup(); // Tutup popup
+      setComments((prevComments) => [result, ...prevComments]); // Tambahkan komentar yang baru dikirim ke daftar komentar
     } catch (error) {
       console.error("Error:", error);
       alert("Terjadi kesalahan saat mengirim komentar.");
@@ -73,6 +87,27 @@ const CommentPopup: React.FC<CommentPopupProps> = ({ closePopup, storyId, onSubm
           <img src="/images/profile.png" alt="Profile" className={styles.profileImage} />
           <h3 className={styles.headerTitle}>{userName}</h3>
         </div>
+
+        {/* Tampilkan komentar yang ada di database */}
+        <div className={styles.commentsList}>
+  {comments.map((commentData, index) => (
+    <div key={index} className={styles.comment}>
+      <div className={styles.left}>
+        <img src="/images/profile.png" alt="Profile" className={styles.profileImage} />
+        <div>
+          <div className={styles.userName}>{commentData.nama}</div>
+          <p>{commentData.text}</p>
+        </div>
+      </div>
+      <div className={styles.right}>
+        <span>{commentData.created_at}</span>
+      </div>
+    </div>
+  ))}
+</div>
+
+
+        {/* Form untuk mengirim komentar */}
         <form onSubmit={handleSubmit}>
           <textarea
             className={styles.textarea}

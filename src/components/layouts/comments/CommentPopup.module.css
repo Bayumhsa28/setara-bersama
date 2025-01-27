@@ -71,3 +71,47 @@
 .submitButton:hover {
   background: #005bb5;
 }
+
+/* CSS untuk menampilkan komentar di atas input form */
+.commentsList {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.comment {
+  background: #f9f9f9;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between; /* Agar foto profil di kiri, tanggal di kanan */
+  align-items: flex-start;
+}
+
+.comment .left {
+  display: flex;
+  align-items: center;
+}
+
+.comment .left .profileImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.comment .left .userName {
+  font-weight: bold;
+}
+
+.comment .right {
+  font-size: 0.8rem;
+  color: #888;
+  text-align: right;
+  margin-top: 5px;
+}
+
+.comment p {
+  margin-top: 5px;
+}
