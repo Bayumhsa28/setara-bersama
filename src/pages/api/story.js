@@ -2,6 +2,7 @@ import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
 import { Pool } from 'pg';
+import Cookies from 'js-cookie';
 
 // Konfigurasi penyimpanan file menggunakan multer
 const upload = multer({
@@ -90,11 +91,11 @@ export default async (req, res) => {
 
       res.status(200).json(result.rows);
     } catch (error) {
-      console.error('Error fetching stories:', error);
-      res.status(500).json({ error: 'Gagal mengambil story.' });
+      console.error('Database error:', error);
+      res.status(500).json({ error: 'Gagal mengambil data story.' });
     }
-  } else {
-    // Return 405 for other HTTP methods
+  }
+   else {
     res.status(405).json({ error: 'Method Not Allowed' });
   }
 };
