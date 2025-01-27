@@ -1,0 +1,14 @@
+.profileImage {
+    /* border-radius: 50%; */
+    object-fit: cover;
+    max-width: 75%; /* Membatasi lebar maksimal gambar */
+    max-height: 75%; /* Membatasi tinggi maksimal gambar */
+    width: auto; /* Mengatur lebar gambar agar proporsional */
+    height: auto; /* Mengatur tinggi gambar agar proporsional */
+  }
+  
+  .profileImageStory {
+    max-width: 100%;
+    height: auto;
+  }
+  
