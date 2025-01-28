@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styles from "./CommentPopup.module.css";
+import deleteButton from "../../../../public/images/deleteButton.png";
+import Image from "next/image";
 import Cookies from "js-cookie";
 
 interface CommentPopupProps {
   closePopup: () => void;
-  storyId: number; // ID cerita yang terkait
-  onSubmitComment: (comment: string) => void; // Fungsi untuk mengirim komentar ke parent
+  storyId: number;
+  onSubmitComment: (comment: string) => void;
 }
 
 const CommentPopup: React.FC<CommentPopupProps> = ({ closePopup, storyId, onSubmitComment }) => {
@@ -13,10 +15,9 @@ const CommentPopup: React.FC<CommentPopupProps> = ({ closePopup, storyId, onSubm
   const [userName, setUserName] = useState<string | null>(null);
   const [role, setRole] = useState<string | null>(null);
   const [email, setEmail] = useState<string | null>(null);
-  const [comments, setComments] = useState<any[]>([]); // State untuk menyimpan komentar yang diambil dari backend
+  const [comments, setComments] = useState<any[]>([]);
 
   useEffect(() => {
-    // Ambil informasi pengguna dari cookies
     const name = Cookies.get("user_name");
     const userRole = Cookies.get("user_role");
     const userEmail = Cookies.get("user_email");
@@ -24,18 +25,17 @@ const CommentPopup: React.FC<CommentPopupProps> = ({ closePopup, storyId, onSubm
     setRole(userRole);
     setEmail(userEmail);
 
-    // Fetch data komentar dari backend
     const fetchComments = async () => {
       try {
         const response = await fetch(`/api/comments?account_story_id=${storyId}`);
         const data = await response.json();
-        setComments(data.comments); // Menyimpan komentar yang diambil
+        setComments(data.comments);
       } catch (error) {
         console.error("Error fetching comments:", error);
       }
     };
 
-    fetchComments(); // Memanggil fungsi untuk mengambil komentar
+    fetchComments();
   }, [storyId]);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -57,7 +57,7 @@ const CommentPopup: React.FC<CommentPopupProps> = ({ closePopup, storyId, onSubm
           role,
           email,
           text: comment,
-          account_story_id: storyId, // Menggunakan storyId yang diterima dari prop
+          account_story_id: storyId,
         }),
       });
 
@@ -66,16 +66,49 @@ const CommentPopup: React.FC<CommentPopupProps> = ({ closePopup, storyId, onSubm
       }
 
       const result = await response.json();
-      console.log("Komentar berhasil dikirim:", result);
       alert("Komentar berhasil dikirim!");
-      setComment(""); // Reset komentar
-      onSubmitComment(comment); // Kirim komentar ke parent
-      setComments((prevComments) => [result, ...prevComments]); // Tambahkan komentar yang baru dikirim ke daftar komentar
+      setComment("");
+      onSubmitComment(comment);
+      setComments((prevComments) => [result, ...prevComments]);
     } catch (error) {
       console.error("Error:", error);
       alert("Terjadi kesalahan saat mengirim komentar.");
     }
   };
+
+  const handleDeleteComment = async (commentId: number) => {
+    try {
+      const response = await fetch("/api/commentsDelete", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          commentId,
+          email,
+          role,
+          name: userName,
+          account_story_id: storyId,
+        }),
+      });
+  
+      if (response.ok) {
+        // Memperbarui state untuk menghapus komentar yang dihapus dari UI
+        setComments((prevComments) =>
+          prevComments.filter((comment) => comment.id !== commentId)
+        );
+        alert("Komentar berhasil dihapus.");
+      } else {
+        const data = await response.json();
+        console.error("Gagal menghapus komentar:", data);
+        alert(data.error || "Gagal menghapus komentar.");
+      }
+    } catch (error: any) {
+      console.error("Error deleting comment:", error.message);
+      alert(error.message || "Terjadi kesalahan saat menghapus komentar.");
+    }
+  };
+  
 
   return (
     <div className={styles.overlay}>
@@ -88,10 +121,9 @@ const CommentPopup: React.FC<CommentPopupProps> = ({ closePopup, storyId, onSubm
           <h3 className={styles.headerTitle}>{userName}</h3>
         </div>
 
-        {/* Tampilkan komentar yang ada di database */}
         <div className={styles.commentsList}>
-          {comments.map((commentData, index) => (
-            <div key={index} className={styles.comment}>
+          {comments.map((commentData) => (
+            <div key={commentData.id} className={styles.comment}>
               <div className={styles.left}>
                 <img src="/images/profile.png" alt="Profile" className={styles.profileImage} />
                 <div>
@@ -102,12 +134,19 @@ const CommentPopup: React.FC<CommentPopupProps> = ({ closePopup, storyId, onSubm
               <div className={styles.right}>
                 <span>{commentData.created_at}</span>
               </div>
+              <div>
+                <Image
+                  src={deleteButton}
+                  alt="Delete Button"
+                  className="deleteButton"
+                  onClick={() => handleDeleteComment(commentData.id)}
+                  style={{ width: "30px", height: "30px", marginLeft: "5px" }}
+                />
+              </div>
             </div>
           ))}
         </div>
 
-
-        {/* Form untuk mengirim komentar */}
         <form onSubmit={handleSubmit}>
           <textarea
             className={styles.textarea}
