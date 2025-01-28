@@ -93,7 +93,7 @@ export default function Home() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ storyId }), // Kirim hanya storyId
+        body: JSON.stringify({ storyId, name, email, role }), // Kirim hanya storyId
       });
   
       if (response.ok) {

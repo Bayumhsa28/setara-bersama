@@ -12,9 +12,22 @@ export default async (req, res) => {
   if (req.method === 'DELETE') {
     // Ambil storyId dari body request
     const { storyId } = req.body;
+    const { email } = req.body;
+    const { role } = req.body;
+    const { name } = req.body;
 
     if (!storyId) {
       return res.status(400).json({ error: 'ID story tidak diberikan' });
+    }
+
+    else if (!email) {
+      return res.status(400).json({ error: 'Email story tidak diberikan' });
+    }
+    else if (!role) {
+      return res.status(400).json({ error: 'role story tidak diberikan' });
+    }
+    else if (!name) {
+      return res.status(400).json({ error: 'name story tidak diberikan' });
     }
 
     // Konfigurasi koneksi PostgreSQL
@@ -30,12 +43,12 @@ export default async (req, res) => {
       const client = await pool.connect();
 
       // Delete the story from the database
-      const deleteQuery = 'DELETE FROM account_story WHERE id = $1';
-      const result = await client.query(deleteQuery, [storyId]);
+      const deleteQuery = 'DELETE FROM account_story WHERE id = $1 AND email = $2 AND role = $3 AND name = $4';
+      const result = await client.query(deleteQuery, [storyId, email, role, name]);
 
       if (result.rowCount === 0) {
         client.release();
-        return res.status(404).json({ error: 'Story tidak ditemukan' });
+        return res.status(404).json({ error: 'anda tidak berhak menghapus ini bukan status yang anda miliki' });
       }
 
       client.release(); // Release connection
