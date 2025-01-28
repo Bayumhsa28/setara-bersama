@@ -35,7 +35,7 @@ const ArtikelPage = () => {
                                 description:
                                     "Kondisi meragukan kemampuan diri yang dapat diatasi dengan kesadaran, tujuan kecil, dan dukungan.",
                                 image: "/images/artikelImages/malu.jpeg",
-                                href: "/support/consultation",
+                                href: "/artikel/rendahKepercayaanDiri",
                             },
                             {
                                 title: "Stres",
