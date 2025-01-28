@@ -20,7 +20,7 @@ const HakUserPopup = ({ closePopup }) => {
             title: "Pasal Hukum untuk Korban Intimidasi Gender",
             laws: [
                 {
-                    title: "Undang-Undang Tindak Pidana Kekerasan Seksual (UU TPKS):",
+                    title: "Undang-Undang Tindak Pidana Kekerasan Seksual (UU TPKS)",
                     details:
                         "Pasal 14 UU No. 12 Tahun 2022 mengatur tentang tindakan yang dapat dikenakan sanksi bagi pelaku kekerasan seksual, termasuk intimidasi yang dialami korban.",
                 },
@@ -28,6 +28,11 @@ const HakUserPopup = ({ closePopup }) => {
                     title: "Kitab Undang-Undang Hukum Pidana (KUHP)",
                     details:
                         "Pasal 281 hingga 296 KUHP mengatur tentang pelecehan seksual dan intimidasi, di mana pelaku dapat dijerat hukum jika terbukti melakukan tindakan tersebut.",
+                },
+                {
+                    title: "Peraturan Mahkamah Agung No. 3 Tahun 2017",
+                    details:
+                        "o	Mengatur tentang perlindungan perempuan berhadapan dengan hukum, termasuk larangan terhadap sikap atau pernyataan yang merendahkan atau mengintimidasi perempuan di pengadilan.",
                 },
             ],
         },
@@ -38,6 +43,21 @@ const HakUserPopup = ({ closePopup }) => {
                     title: "Kepolisian",
                     details:
                         "Korban dapat melapor ke kantor polisi terdekat untuk mengajukan laporan resmi mengenai intimidasi yang dialami.",
+                },
+                {
+                    title: "Lembaga Perlindungan Saksi dan Korban (LPSK)",
+                    details:
+                        "LPSK memberikan perlindungan dan dukungan kepada korban kekerasan, termasuk intimidasi gender, dan membantu dalam proses hukum.",
+                },
+                {
+                    title: "Komnas Perempuan",
+                    details:
+                        "Komisi Nasional Perempuan menyediakan layanan pengaduan dan dukungan bagi perempuan yang mengalami kekerasan dan intimidasi.",
+                },
+                {
+                    title: "Lembaga Bantuan Hukum (LBH)",
+                    details:
+                        "LBH dapat memberikan bantuan hukum dan pendampingan bagi korban dalam proses pelaporan dan persidangan.",
                 },
             ],
         },
@@ -62,7 +82,7 @@ const HakUserPopup = ({ closePopup }) => {
                     </div>
 
                     <div className={styles.lawsContainer}>
-                        <h2 className={styles.title} style={{ marginLeft: "10px" }}>
+                        <h2 className={styles.title} style={{ marginLeft: "10px" , marginTop: "10px" }}>
                             {slides[currentSlide].title}
                         </h2>
                         <ul className={styles.lawsList}>
