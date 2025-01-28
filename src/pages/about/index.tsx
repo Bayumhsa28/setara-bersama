@@ -5,6 +5,7 @@ import Footer from "@/components/layouts/Footer";
 import Cookies from "js-cookie"; 
 import styles from "./Home.module.css";
 import HakUserPopup from "@/components/layouts/hakUserPopup"; 
+import DukunganPopup from "@/components/layouts/dapatDukunganPopup"; 
 
 export default function Home() {
   const router = useRouter();
@@ -12,7 +13,8 @@ export default function Home() {
   const email = Cookies.get("user_email");
   const role = Cookies.get("user_role");
 
-  const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [isHakPopupVisible, setIsHakPopupVisible] = useState(false);
+  const [isDukunganPopupVisible, setIsDukunganPopupVisible] = useState(false);
 
   useEffect(() => {
     if (!name || !email || role !== "1") {
@@ -20,12 +22,20 @@ export default function Home() {
     }
   }, [name, email, role, router]);
 
-  const showPopup = () => {
-    setIsPopupVisible(true);
+  const showHakPopup = () => {
+    setIsHakPopupVisible(true);
   };
 
-  const closePopup = () => {
-    setIsPopupVisible(false);
+  const closeHakPopup = () => {
+    setIsHakPopupVisible(false);
+  };
+
+  const showDukunganPopup = () => {
+    setIsDukunganPopupVisible(true);
+  };
+
+  const closeDukunganPopup = () => {
+    setIsDukunganPopupVisible(false);
   };
 
   return (
@@ -39,8 +49,20 @@ export default function Home() {
             dan berjuang menciptakan dunia yang setara.
           </p>
           <div className={styles["button-group"]}>
-            <button type="submit" className={styles.button}>Dapatkan Dukungan</button>
-            <button type="button" className={styles.button} onClick={showPopup}>Pelajari Hak Anda</button>
+            <button 
+              type="submit" 
+              className={styles.button} 
+              onClick={showDukunganPopup}
+            >
+              Dapatkan Dukungan
+            </button>
+            <button 
+              type="button" 
+              className={styles.button} 
+              onClick={showHakPopup}
+            >
+              Pelajari Hak Anda
+            </button>
           </div>
         </div>
         <div className={styles.hero1}>
@@ -67,7 +89,8 @@ export default function Home() {
         </div>
       </main>
       <Footer />
-      {isPopupVisible && <HakUserPopup closePopup={closePopup} />} 
+      {isHakPopupVisible && <HakUserPopup closePopup={closeHakPopup} />} 
+      {isDukunganPopupVisible && <DukunganPopup closePopup={closeDukunganPopup} />}
     </div>
   );
 }

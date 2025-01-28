@@ -58,8 +58,8 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link href="/support/legal" onClick={() => setIsOpen(false)}>
-            Legal Support
+          <Link href="/artikel" onClick={() => setIsOpen(false)}>
+            Artikel
           </Link>
         </li>
         <li>
