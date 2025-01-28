@@ -1,8 +1,7 @@
-// pages/home/index.tsx
+
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Navbar from "@/components/layouts/Navbar";
-import FirstShow from "@/components/layouts/firstShow"; // Perbaiki penulisan import
 import Footer from "@/components/layouts/Footer";
 import Cookies from "js-cookie"; // Import js-cookie
 import styles from "./Home.module.css";
@@ -24,7 +23,6 @@ export default function Home() {
     <div className="container">
       <Navbar />
       <main className={styles.content}>
-        <FirstShow /> {/* Gunakan FirstShow di sini */}
         <div className={styles.hero}>
           <h1 className={styles.heading}>Tujuan Web:</h1>
           <p className={styles.paragraph}>
@@ -32,9 +30,10 @@ export default function Home() {
             dan berjuang menciptakan dunia yang setara.
           </p>
           <div className={styles["button-group"]}>
-            <button className="primary-button">Dapatkan Dukungan</button>
-            <button className="secondary-button">Pelajari Hak Anda</button>
+            <button type="submit" className={styles.button}>Dapatkan Dukungan</button>
+            <button type="submit" className={styles.button}>Pelajari Hak Anda</button>
           </div>
+
         </div>
         <div className={styles.hero1}>
           <div className={styles.vision}>

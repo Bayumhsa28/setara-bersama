@@ -96,47 +96,32 @@
 }
 
 /* Tombol */
+/* Tombol */
 .button-group {
   display: flex;
   justify-content: end;
   gap: 20px; /* Jarak antar tombol */
-  /* margin-top: 16px; */
 }
 
-.primary-button,
-.secondary-button {
-  padding: 12px 24px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 8px;
+.button {
+  background-color: #e6b3e0;
+  color: white;
+  padding: 12px;
   border: none;
+  border-radius: 8px;
+  width: 100%;
   cursor: pointer;
-  transition:
-    background-color 0.3s ease,
-    transform 0.2s ease;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
-.primary-button {
-  background-color: #6a0dad; /* Ungu */
-  color: #ffffff; /* Teks putih */
+.button:hover {
+  background-color: #6a0dad;
 }
 
-.primary-button:hover {
-  background-color: #550b9e; /* Ungu lebih gelap saat hover */
-  transform: scale(1.05);
+.button:disabled {
+  background-color: #adadad;
+  cursor: not-allowed;
 }
 
-.secondary-button {
-  background-color: #eaf6e7; /* Hijau pastel */
-  color: #6a0dad; /* Ungu */
-  border: 2px solid #6a0dad; /* Border ungu */
-}
 
-.secondary-button:hover {
-  background-color: #d9f0d6; /* Hijau lebih terang saat hover */
-  transform: scale(1.05);
-}
-
-.listKolaborator {
-  margin-left: 30px;
-}
