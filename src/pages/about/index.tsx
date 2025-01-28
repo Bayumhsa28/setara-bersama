@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
-import Cookies from "js-cookie"; // Import js-cookie
+import Cookies from "js-cookie"; 
 import styles from "./Home.module.css";
-import HakUserPopup from "@/components/layouts/hakUserPopup"; // Import HakUserPopup
+import HakUserPopup from "@/components/layouts/hakUserPopup"; 
 
 export default function Home() {
   const router = useRouter();
@@ -15,14 +15,17 @@ export default function Home() {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   useEffect(() => {
-    // Jika tidak ada cookie, arahkan ke halaman login
     if (!name || !email || role !== "1") {
-      router.push("/login"); // Pastikan URL login benar
+      router.push("/login"); 
     }
   }, [name, email, role, router]);
 
   const showPopup = () => {
     setIsPopupVisible(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupVisible(false);
   };
 
   return (
@@ -64,7 +67,7 @@ export default function Home() {
         </div>
       </main>
       <Footer />
-      {isPopupVisible && <HakUserPopup />} {/* Render popup jika visible */}
+      {isPopupVisible && <HakUserPopup closePopup={closePopup} />} 
     </div>
   );
 }
