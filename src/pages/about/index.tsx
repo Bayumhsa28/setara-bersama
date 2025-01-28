@@ -1,10 +1,10 @@
-
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import Cookies from "js-cookie"; // Import js-cookie
 import styles from "./Home.module.css";
+import HakUserPopup from "@/components/layouts/hakUserPopup"; // Import HakUserPopup
 
 export default function Home() {
   const router = useRouter();
@@ -12,12 +12,18 @@ export default function Home() {
   const email = Cookies.get("user_email");
   const role = Cookies.get("user_role");
 
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+
   useEffect(() => {
     // Jika tidak ada cookie, arahkan ke halaman login
     if (!name || !email || role !== "1") {
       router.push("/login"); // Pastikan URL login benar
     }
   }, [name, email, role, router]);
+
+  const showPopup = () => {
+    setIsPopupVisible(true);
+  };
 
   return (
     <div className="container">
@@ -31,9 +37,8 @@ export default function Home() {
           </p>
           <div className={styles["button-group"]}>
             <button type="submit" className={styles.button}>Dapatkan Dukungan</button>
-            <button type="submit" className={styles.button}>Pelajari Hak Anda</button>
+            <button type="button" className={styles.button} onClick={showPopup}>Pelajari Hak Anda</button>
           </div>
-
         </div>
         <div className={styles.hero1}>
           <div className={styles.vision}>
@@ -59,6 +64,7 @@ export default function Home() {
         </div>
       </main>
       <Footer />
+      {isPopupVisible && <HakUserPopup />} {/* Render popup jika visible */}
     </div>
   );
 }
