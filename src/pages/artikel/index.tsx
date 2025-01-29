@@ -42,14 +42,14 @@ const ArtikelPage = () => {
                                 description:
                                     "Stres adalah respons tubuh terhadap tekanan yang dapat dikelola dengan olahraga, relaksasi, tidur cukup, hobi, dan dukungan sosial.",
                                 image: "/images/artikelImages/stress.jpg",
-                                href: "/support/page2",
+                                href: "/artikel/stress",
                             },
                             {
                                 title: "Cemas",
                                 description:
                                     "Perasaan khawatir berlebihan yang dapat diatasi dengan pernapasan dalam, olahraga, dukungan sosial, dan teknik relaksasi.",
                                 image: "/images/artikelImages/cemas.jpg",
-                                href: "/support/page3",
+                                href: "/artikel/cemas",
                             },
                             
                             {
@@ -57,14 +57,14 @@ const ArtikelPage = () => {
                                 description:
                                     "Trauma emosional adalah respons psikologis terhadap pengalaman menyakitkan yang dapat diatasi dengan berbicara, menulis, relaksasi, olahraga, dan dukungan profesional.",
                                 image: "/images/artikelImages/trauma.jpeg",
-                                href: "/support/page3",
+                                href: "/artikel/trauma",
                             },
                             {
                                 title: "Perasaan terasing",
                                 description:
                                     "Perasaan terasing adalah kondisi merasa tidak terhubung yang dapat diatasi dengan berbicara, kegiatan sosial, mindfulness, dan waktu untuk diri sendiri.",
                                 image: "/images/artikelImages/bingung.jpg",
-                                href: "/support/page3",
+                                href: "/artikel/perasaan",
                             },
                         ].map((card, index) => (
                             <Link key={index} href={card.href} aria-label={card.title}>
