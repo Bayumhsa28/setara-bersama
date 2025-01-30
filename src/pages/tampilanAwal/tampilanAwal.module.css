@@ -73,6 +73,21 @@
     cursor: pointer;
 }
 
+.card h2 {
+    color: #f8f8f8;
+    font-size: 1.3rem;
+    margin-top: 10px;
+    margin-bottom: 8px; /* Tambahkan jarak bawah */
+}
+
+.card p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #f8f8f8;
+    margin-top: 8px; /* Tambahkan jarak atas */
+}
+
+
 .cardImage {
     filter: brightness(0) invert(1); /* Mengubah warna gambar menjadi putih */
     transition: transform 0.3s ease-in-out;

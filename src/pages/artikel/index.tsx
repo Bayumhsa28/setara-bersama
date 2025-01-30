@@ -66,6 +66,13 @@ const ArtikelPage = () => {
                                 image: "/images/artikelImages/bingung.jpg",
                                 href: "/artikel/perasaan",
                             },
+                            {
+                                title: "Relaksasi dengan metode “BERNAFAS”",
+                                description:
+                                    "Metode BERNAFAS adalah teknik sederhana untuk mengelola stres dengan bernapas dalam, mengekspresikan diri, merelaksasi otot, menikmati alam, menggunakan afirmasi positif, fokus pada saat ini, beraktivitas fisik, dan menyediakan waktu untuk diri sendiri.",
+                                image: "/images/artikelImages/meditationBackground.jpg",
+                                href: "/artikel/bernafas",
+                            },
                         ].map((card, index) => (
                             <Link key={index} href={card.href} aria-label={card.title}>
                                 <div className={styles.card}>

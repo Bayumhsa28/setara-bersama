@@ -37,8 +37,8 @@ export default function Home() {
             href: "/support"
         },
         {
-            title: "Artikel",
-            description: "Anda dapat ke page artikel dengan mengklik card ini.",
+            title: "apa yang sedang anda rasakan?",
+            description: "Anda dapat ke page informasi tentang perasaan dengan mengklik card ini.",
             image: "/images/button/artikelWhiteButton.png",
             href: "/artikel"
         },
