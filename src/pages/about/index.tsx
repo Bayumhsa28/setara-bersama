@@ -49,7 +49,7 @@ export default function Home() {
             dan berjuang menciptakan dunia yang setara.
           </p>
           <div className={styles["button-group"]}>
-            <button 
+            {/* <button 
               type="submit" 
               className={styles.button} 
               onClick={showDukunganPopup}
@@ -62,7 +62,7 @@ export default function Home() {
               onClick={showHakPopup}
             >
               Pelajari Hak Anda
-            </button>
+            </button> */}
           </div>
         </div>
         <div className={styles.hero1}>
