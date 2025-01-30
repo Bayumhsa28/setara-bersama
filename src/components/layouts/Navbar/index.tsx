@@ -59,7 +59,7 @@ const Navbar = () => {
         </li>
         <li>
           <Link href="/artikel" onClick={() => setIsOpen(false)}>
-            Artikel
+            Apa yang sedang kamu rasakan
           </Link>
         </li>
         <li>
