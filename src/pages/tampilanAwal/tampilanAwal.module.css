@@ -1,0 +1,130 @@
+/* General Container */
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--background-color);
+    color: #333;
+}
+
+/* Main Content */
+.content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    width: 100%;
+    height: 100vh; /* Full screen */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #e6b3e0, #6a0dad);
+    border-radius: 8px;
+    color: white;
+    padding: 50px 20px;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.2);
+}
+
+.heroTitle {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    font-weight: bold;
+    
+    text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.3);
+}
+
+.heroDescription {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+/* Cards Section */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Card Styling */
+.card {
+    background: #f782ed;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.cardImage {
+    filter: brightness(0) invert(1); /* Mengubah warna gambar menjadi putih */
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    background: #00c6ff;
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover .cardImage {
+    transform: scale(1.1);
+}
+
+.card h2 {
+    color: #f8f8f8;
+    font-size: 1.3rem;
+    margin-top: 10px;
+}
+
+.card p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #f8f8f8;
+}
+
+.decorImage {
+    margin-top: 20px;
+    border-radius: 10px;
+    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); */
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+    .hero {
+        height: auto;
+        padding: 50px 20px;
+    }
+
+    .heroTitle {
+        font-size: 2rem;
+    }
+
+    .heroDescription {
+        font-size: 1rem;
+    }
+
+    .card {
+        width: 90%;
+    }
+}

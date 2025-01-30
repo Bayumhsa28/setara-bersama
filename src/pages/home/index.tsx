@@ -35,7 +35,7 @@ export default function Home() {
 
   useEffect(() => {
     if (!name || !email || role !== "1") {
-      router.push("/login");
+      router.push("/");
     }
   }, [name, email, role, router]);
 

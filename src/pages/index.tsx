@@ -38,7 +38,7 @@ export default function Login() {
       if (data.user.role === 2) {
         router.push("/admin"); // Jika user_role 2, arahkan ke halaman admin
       } else {
-        router.push("/home"); // Jika bukan, arahkan ke halaman home
+        router.push("/tampilanAwal"); // Jika bukan, arahkan ke halaman home
       }
     } catch (err: any) {
       setError(err.message);
