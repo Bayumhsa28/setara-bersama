@@ -48,7 +48,7 @@ export default function Home() {
         <div className="container">
             <main className={styles.content}>
                 <div className={styles.hero}>
-                    <h1 className={styles.heroTitle}>Inspirasi untuk Hidup Lebih Baik</h1>
+                    <h1 className={styles.heroTitle}>Kesetaraan bukan pemberian, tetapi hak. Jangan ragu untuk memperjuangkannya!</h1>
                     <p className={styles.heroDescription}>
                         Temukan pages yang kamu inginkan saat ini
                     </p>
