@@ -37,7 +37,7 @@ export default function Home() {
             href: "/support"
         },
         {
-            title: "apa yang sedang anda rasakan?",
+            title: "Apa yang sedang Anda rasakan?",
             description: "Anda dapat ke page informasi tentang perasaan dengan mengklik card ini.",
             image: "/images/button/artikelWhiteButton.png",
             href: "/artikel"
@@ -45,12 +45,12 @@ export default function Home() {
     ];
 
     return (
-        <div className="container">
+        <div className={styles.container}>
             <main className={styles.content}>
                 <div className={styles.hero}>
                     <h1 className={styles.heroTitle}>Kesetaraan bukan pemberian, tetapi hak. Jangan ragu untuk memperjuangkannya!</h1>
                     <p className={styles.heroDescription}>
-                        Temukan pages yang kamu inginkan saat ini
+                        Temukan halaman yang kamu inginkan saat ini.
                     </p>
                     <div className={styles.cards}>
                         {cards.map((card, index) => (
@@ -77,7 +77,6 @@ export default function Home() {
                         height={300}
                         className={styles.decorImage}
                     />
-
                 </div>
             </main>
         </div>
