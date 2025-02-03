@@ -50,7 +50,7 @@ export default function Login() {
       <div className={styles["login-content"]}>
         <div className={styles["image-container"]}>
           <Image
-            src="/images/handShake.png"
+            src="/images/handShake2.jpg"
             alt="Consultation Illustration"
             width={263}
             height={198}
