@@ -1,6 +1,7 @@
-import { Pool } from 'pg';
+import { PrismaClient } from "@prisma/client";
 
-// API untuk menangani delete story
+const prisma = new PrismaClient();
+
 export const config = {
   api: {
     bodyParser: true, // Aktifkan body parser untuk menerima JSON body
@@ -9,56 +10,45 @@ export const config = {
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
-  if (req.method === 'DELETE') {
-    // Ambil storyId dari body request
-    const { storyId } = req.body;
-    const { email } = req.body;
-    const { role } = req.body;
-    const { name } = req.body;
+  if (req.method === "DELETE") {
+    const { storyId, email, role, name } = req.body;
 
     if (!storyId) {
-      return res.status(400).json({ error: 'ID story tidak diberikan' });
+      return res.status(400).json({ error: "ID story tidak diberikan" });
     }
-
-    else if (!email) {
-      return res.status(400).json({ error: 'Email story tidak diberikan' });
+    if (!email) {
+      return res.status(400).json({ error: "Email story tidak diberikan" });
     }
-    else if (!role) {
-      return res.status(400).json({ error: 'role story tidak diberikan' });
+    if (!role) {
+      return res.status(400).json({ error: "Role story tidak diberikan" });
     }
-    else if (!name) {
-      return res.status(400).json({ error: 'name story tidak diberikan' });
+    if (!name) {
+      return res.status(400).json({ error: "Name story tidak diberikan" });
     }
-
-    // Konfigurasi koneksi PostgreSQL
-    const pool = new Pool({
-      user: 'postgres',
-      host: 'localhost',
-      database: 'postgres',
-      password: '',
-      port: 5432,
-    });
 
     try {
-      const client = await pool.connect();
+      // Hapus story berdasarkan id, email, role, dan name
+      const deletedStory = await prisma.story.deleteMany({
+        where: {
+          id: parseInt(storyId),
+          email: email,
+          role: parseInt(role),
+          name: name,
+        },
+      });
 
-      // Delete the story from the database
-      const deleteQuery = 'DELETE FROM account_story WHERE id = $1 AND email = $2 AND role = $3 AND name = $4';
-      const result = await client.query(deleteQuery, [storyId, email, role, name]);
-
-      if (result.rowCount === 0) {
-        client.release();
-        return res.status(404).json({ error: 'anda tidak berhak menghapus ini bukan status yang anda miliki' });
+      if (deletedStory.count === 0) {
+        return res.status(404).json({
+          error: "Anda tidak berhak menghapus ini, bukan status yang anda miliki",
+        });
       }
 
-      client.release(); // Release connection
-
-      res.status(200).json({ message: 'Story berhasil dihapus!' });
+      res.status(200).json({ message: "Story berhasil dihapus!" });
     } catch (error) {
-      console.error('Database error:', error);
-      res.status(500).json({ error: 'Gagal menghapus story dari database.' });
+      console.error("Database error:", error);
+      res.status(500).json({ error: "Gagal menghapus story dari database." });
     }
   } else {
-    res.status(405).json({ error: 'Method Not Allowed' });
+    res.status(405).json({ error: "Method Not Allowed" });
   }
 };
