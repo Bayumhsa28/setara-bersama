@@ -1,14 +1,7 @@
-import bcrypt from "bcryptjs"; // Ganti bcrypt dengan bcryptjs
-import { Pool } from "pg";
+import bcrypt from "bcryptjs";
+import { PrismaClient } from "@prisma/client";
 
-// Konfigurasi koneksi ke database PostgreSQL
-const pool = new Pool({
-  user: "postgres",
-  host: "localhost",
-  database: "postgres",
-  password: "",
-  port: 5432,
-});
+const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
@@ -18,21 +11,31 @@ export default async function handler(req, res) {
       return res.status(400).json({ message: "Semua field harus diisi." });
     }
 
+    if (!["f", "m"].includes(gender)) {
+      return res.status(400).json({ message: "Gender harus 'f' atau 'm'." });
+    }
+
     try {
       // Hash password
       const hashedPassword = await bcrypt.hash(password, 10);
 
       // Simpan data ke database dengan nilai role = 1
-      const result = await pool.query(
-        "INSERT INTO account (email, nama, gender, password, role) VALUES ($1, $2, $3, $4, $5) RETURNING email",
-        [email, nama, gender, hashedPassword, 1], // Role = 1
-      );
+      const newUser = await prisma.account.create({
+        data: {
+          nama,
+          email,
+          gender,
+          password: hashedPassword,
+          role: 1, // Default role = 1
+        },
+        select: {
+          email: true,
+        },
+      });
 
-      res
-        .status(201)
-        .json({ message: "Registrasi berhasil", email: result.rows[0].email });
+      res.status(201).json({ message: "Registrasi berhasil", email: newUser.email });
     } catch (error) {
-      if (error.code === "23505") {
+      if (error.code === "P2002") { // Error kode untuk unique constraint Prisma
         return res.status(400).json({ message: "Email sudah terdaftar." });
       }
       res.status(500).json({ message: "Terjadi kesalahan pada server." });

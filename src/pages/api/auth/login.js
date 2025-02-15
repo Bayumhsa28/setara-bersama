@@ -1,15 +1,11 @@
-import bcrypt from "bcryptjs"; // Ganti bcrypt dengan bcryptjs
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { Pool } from "pg";
+import { PrismaClient } from "@prisma/client";
 
-// Konfigurasi koneksi ke database PostgreSQL
-const pool = new Pool({
-  user: "postgres",
-  host: "localhost",
-  database: "postgres",
-  password: "", // Isi dengan password database
-  port: 5432,
-});
+const globalForPrisma = global;
+const prisma = globalForPrisma.prisma || new PrismaClient();
+
+if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -24,10 +20,9 @@ export default async function handler(req, res) {
 
   try {
     // Cek apakah email ada di database
-    const result = await pool.query("SELECT * FROM account WHERE email = $1", [
-      email,
-    ]);
-    const user = result.rows[0];
+    const user = await prisma.account.findUnique({
+      where: { email },
+    });
 
     if (!user) {
       return res.status(401).json({ message: "Email atau password salah" });
@@ -42,19 +37,17 @@ export default async function handler(req, res) {
     // Buat JWT token
     const token = jwt.sign(
       { email: user.email, name: user.nama, role: user.role },
-      process.env.JWT_SECRET || "your-secret-key", // Pastikan untuk menggunakan key yang aman
-      { expiresIn: "1h" },
+      process.env.JWT_SECRET || "your-secret-key",
+      { expiresIn: "1h" }
     );
 
     // Kirim response dengan token dan data user
-    res
-      .status(200)
-      .json({
-        token,
-        user: { email: user.email, name: user.nama, role: user.role },
-      });
+    res.status(200).json({
+      token,
+      user: { email: user.email, name: user.nama, role: user.role },
+    });
   } catch (error) {
-    console.error(error);
+    console.error("Login Error:", error);
     res.status(500).json({ message: "Terjadi kesalahan pada server." });
   }
 }

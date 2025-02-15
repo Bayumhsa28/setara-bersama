@@ -7,8 +7,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id    String @id @default(uuid())
-  name  String
-  email String @unique
+enum Gender {
+  f
+  m
 }
+
+model Account {
+  id         Int     @id @default(autoincrement())
+  nama       String
+  email      String  @unique
+  gender     Gender
+  password   String
+  role       Int     @default(1)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+
